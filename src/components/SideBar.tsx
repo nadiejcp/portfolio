@@ -20,9 +20,12 @@ const SideBar = () => {
     const icons2 = language === 'EN' ? ['About me', 'Contact me'] : ['Sobre mi', 'Contactame']
     const description = language === 'EN' ? 'AI Developer' : 'Desarrollador IA';
     return (
-        <div className={`ml-10 p-[30px] mt-10 w-fit rounded-xl bg-[#1d1d1d] flex flex-col items-left transition-all duration-500`}
+        <div className={`ml-10 p-[30px] mt-10 w-fit rounded-xl bg-[#1d1d1d] flex flex-col items-left transition-all duration-500 h-fit`}
             onMouseEnter={() => setExpanded(true)}
             onMouseLeave={() => setExpanded(false)}
+            style={{
+                width: expanded ? '30%' : 'fit-content',
+            }}
         >
             <div className="flex items-center">
                 <Image src='/avatar.jpg' 
