@@ -3,13 +3,16 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useLanguage } from "./LanguageContext";
+import Link from "next/link";
 
-const iconRender = (text: string, link: string, expanded:boolean) => {
+const iconRender = (text: string, link: string, expanded:boolean, href:string) => {
     return (
-        <div key={text} className='flex items-center'>
-            <Image src={link} alt='Inicio' width={30} height={30}></Image>
-            {expanded && <p className='color-white pl-3'>{text}</p>}
-        </div>
+        <Link href={href}>
+            <div key={text} className='flex items-center'>
+                <Image src={link} alt='Inicio' width={30} height={30}></Image>
+                {expanded && <p className='color-white pl-3'>{text}</p>}
+            </div>
+        </Link>
     );
 }
 
@@ -39,13 +42,13 @@ const SideBar = () => {
                 </div>}
             </div>
             <div className="mt-10 mb-10 flex flex-col gap-7 pl-7">
-                {iconRender(icons[0], `/inicio.svg`, expanded)}
-                {iconRender(icons[1], `/proyectos.svg`, expanded)}
+                {iconRender(icons[0], `/inicio.svg`, expanded, '/')}
+                {iconRender(icons[1], `/proyectos.svg`, expanded, '/projects')}
             </div>
             <div className="mt-2 mb-2 border-1"></div>
             <div className="mt-10 flex flex-col gap-7 pl-7">
-                {iconRender(icons2[0], `/sobre mi.svg`, expanded)}
-                {iconRender(icons2[1], `/contactame.svg`, expanded)}
+                {iconRender(icons2[0], `/sobre mi.svg`, expanded, '/about')}
+                {iconRender(icons2[1], `/contactame.svg`, expanded, '/contact')}
             </div>
             <div className="mt-10 flex items-center cursor-pointer pl-7" onClick={() => {setLanguage((prev) => prev === 'EN' ? 'ES' : 'EN')}}>
                 <Image src={'/globe.svg'} alt='language icon' width={30} height={30}/>
