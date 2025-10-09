@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedServices } from "@/components/animated-services";
 import Clients from "@/components/Clients";
 import { useLanguage } from "@/components/LanguageContext";
 import LoadingSpinner from "@/components/Loading";
@@ -77,7 +78,27 @@ const Project = () => {
           </div>
         </div>
       </div>
-      <Clients />
+      {AnimatedServices(
+        { services: [
+          {
+            name: 'text.name1', 
+            description: 'text.description1',
+            subtitle: 'text.subtitle1',
+            src: "/images/solutions/AI-solutions.jpg"
+          },
+          {
+            name: 'text.name2', 
+            description: 'text.description2',
+            subtitle: 'text.subtitle2',
+            src: "/images/solutions/Coding.jpeg"
+          },
+          {
+            name: 'text.name3', 
+            description: 'text.description3',
+            subtitle: 'text.subtitle3',
+            src: "/images/solutions/documents.jpg"
+          }
+        ]})}
     </div>
   )
 }
