@@ -1,17 +1,18 @@
 "use client";
 
-import { useLanguage } from "@/components/LanguageContext";
+import LoadingSpinner from "@/components/Loading";
 import ProjectContainer from "@/components/ProjectContainter";
-import { useProject } from "@/components/ProjectContext";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface Project {
+  id: number;
   icon: string;
   title: string;
-  typo: string;
+  typo: 'W' | 'W1' | 'D';
   url: string;
+  txt: string;
 }
+
 
 export default function About() {
   const [projects, setProjects] = useState<Project[]>([])
@@ -23,14 +24,16 @@ export default function About() {
         const text = await response.text()
         const projectsArray = text
           .split('\n')
-          .filter((line) => {return line.trim(); })
+          .filter((line) => { return line.trim(); })
           .map((line) => {
-            const [icon, title, typo, url] = line.split(',').map((item) => { return item.trim(); })
+            const [id, name, title, typo, url] = line.split(',').map((item) => { return item.trim(); })
             return {
-              icon: icon || '/avatar.jpg',
+              id: Number(id) || 0,
+              icon: name ? `/projects/${name}.png` : '',
               title: title || '',
-              typo: typo || 'tipo',
-              url: url || '#'
+              typo: typo || 'W',
+              url: url || '',
+              txt: name ? `/projects/additional${name}.txt` : '',
             }
           })
         setProjects(projectsArray)
@@ -43,7 +46,7 @@ export default function About() {
     loadProjects()
   }, [])
 
-  if (loading) return <div>Loading projects...</div>
+  if (loading) return <LoadingSpinner />
 
   const containers = Math.trunc(projects.length / 3) + 1;
   return (

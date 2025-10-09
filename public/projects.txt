@@ -1,3 +1,3 @@
-/projects/plus.png,Plus Service & Notary,W1,https://www.plusnotary.net/
-/projects/construction.png,Darwin Construction Inc,W,https://www.darwinconstruction.com/
-/projects/server.png,Local Cloud,W1,https://github.com/nadiejcp/server
+1,plus,Plus Service & Notary,W1,https://www.plusnotary.net/
+2,construction,Darwin Construction Inc,W,https://www.darwinconstruction.com/
+3,server,Local Cloud,W1,https://github.com/nadiejcp/server
