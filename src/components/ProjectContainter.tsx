@@ -5,7 +5,7 @@ import { useLanguage } from './LanguageContext';
 
 interface Project {
   id: number;
-  icon: string;
+  name: string;
   title: string;
   typo: 'W' | 'W1' | 'D';
   url: string;
@@ -35,7 +35,7 @@ const ProjectContainer = ({ project }: ContainerProps) => {
       localStorage.setItem('project', JSON.stringify(project));
       router.push('/projects/project');
     }}>
-      <Image src={project.icon} alt='' width={100} height={100}
+      <Image src={`/projects/${project.name}.png`} alt='' width={100} height={100}
       style={{
         width: '100%',
         height: '60%',

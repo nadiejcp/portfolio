@@ -6,11 +6,10 @@ import { useEffect, useState } from "react";
 
 interface Project {
   id: number;
-  icon: string;
+  name: string;
   title: string;
   typo: 'W' | 'W1' | 'D';
   url: string;
-  txt: string;
 }
 
 
@@ -29,11 +28,10 @@ export default function About() {
             const [id, name, title, typo, url] = line.split(',').map((item) => { return item.trim(); })
             return {
               id: Number(id) || 0,
-              icon: name ? `/projects/${name}.png` : '',
+              name: name || '',
               title: title || '',
               typo: typo || 'W',
               url: url || '',
-              txt: name ? `/projects/additional${name}.txt` : '',
             }
           })
         setProjects(projectsArray)

@@ -15,10 +15,10 @@ type Service = {
 
 export const AnimatedServices = ({
   services,
-  autoplay = false,
+  autoplay,
 }: {
   services: Service[];
-  autoplay?: boolean;
+  autoplay: boolean;
 }) => {
   const [active, setActive] = useState(0);
 
@@ -84,10 +84,10 @@ export const AnimatedServices = ({
                   <Image
                     src={service.src}
                     alt={service.name}
-                    width={500}
-                    height={500}
+                    width={700}
+                    height={354}
                     draggable={false}
-                    className="h-full w-full rounded-3xl object-cover object-center"
+                    className="rounded-3xl object-cover object-center"
                   />
                 </motion.div>
               ))}

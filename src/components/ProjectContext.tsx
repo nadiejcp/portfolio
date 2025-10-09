@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface Project {
   id: number;
-  icon: string;
+  name: string;
   title: string;
   typo: string;
   url: string;
@@ -20,10 +20,10 @@ const ProjectContext = createContext<ProjectContextType | undefined>(undefined);
 export const ProjectProvider = ({ children }: { children: ReactNode }) => {
   const [project, setProject] = useState({
     id: 0,
-    icon: '',
+    name: '',
     title: '',
     typo: '',
-    url: ''
+    url: '',
   });
 
   return (

@@ -1,0 +1,3 @@
+This is a description for PLUS project
+NextJS,MySQL,AWS,Payment
+Challenge Accepted my friend and dude
