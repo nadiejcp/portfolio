@@ -74,7 +74,7 @@ const Project = () => {
     async function getProjectInfo() {
       if (!project.name) return;
       try {
-        const response = await fetch(`/projects/additional/${project.name}-screens.txt`);
+        const response = await fetch(`./projects/additional/${project.name}-screens.txt`);
         const text = await response.text();
         const projectsArray = text
           .split('\n')
@@ -94,7 +94,7 @@ const Project = () => {
         setProjectScreens([]);
       }
       try {
-        const response = await fetch(`/projects/additional/${project.name}-general.txt`);
+        const response = await fetch(`./projects/additional/${project.name}-general.txt`);
         const text = await response.text();
         const projectsArray = text
           .split('\n')
