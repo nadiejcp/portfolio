@@ -37,7 +37,7 @@ const ProjectContainer = ({ project }: ContainerProps) => {
   }
   
   return (
-    <div className="flex flex-col justify-evenly w-[30%] bg-[#1d1d1d] hover:bg-[#111] pt-5 pl-5 pr-5 rounded-3xl"
+    <div className="flex flex-col justify-evenly w-[30%] bg-[#1d1d1d] hover:bg-[#111] pt-5 pl-5 pr-5 rounded-3xl cursor-pointer"
     onClick={() => { 
       setProject(project);
       localStorage.setItem('project', JSON.stringify(project));
