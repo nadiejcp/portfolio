@@ -7,9 +7,10 @@ type SmallSquareProps = {
   subtitle: string;
   icon?: string;
   link?: string;
+  openLink?: string;
 };
 
-export default function SmallSquare({ title, subtitle, icon, link }: SmallSquareProps) {
+export default function SmallSquare({ title, subtitle, icon, link, openLink }: SmallSquareProps) {
     return(
       <div
         className="p-7 w-[230px] flex flex-col items-center rounded-3xl bg-[radial-gradient(circle_farthest-corner_at_0%_0%,#48494a,#262627)] shadow-md shadow-white/50 hover:-translate-y-3 hover:bg-[#222] cursor-pointer"
@@ -21,7 +22,7 @@ export default function SmallSquare({ title, subtitle, icon, link }: SmallSquare
                 a.download = link;
                 a.click();
               }
-            : undefined
+            : ( openLink ? () => window.open(openLink) : undefined)
         }
       >
         {icon ? <Image src={icon} alt={'Icon for Social Network'} width={50} height={50}/> 

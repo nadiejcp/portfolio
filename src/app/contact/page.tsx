@@ -30,7 +30,7 @@ export default function About() {
     <div className="w-full m-10 flex flex-col gap-10">
       <div className="text-2xl">{translations.contact}</div>
       <BigSquare blur={false} title={translations.title2} subtitle={translations.subTitle2} width="100%">
-        <SmallSquare icon={"/icons/wpp.svg"} subtitle={"WhatsApp"}/>
+        <SmallSquare icon={"/icons/wpp.svg"} subtitle={"WhatsApp"} link='https://wa.me/+593988988079'/>
         <SmallSquare icon={"/icons/mail.svg"} subtitle={translations.contact1}/>
         <SmallSquare icon={"/icons/phone.svg"} subtitle={translations.contact2}/>
       </BigSquare>
@@ -39,16 +39,16 @@ export default function About() {
         <div className="flex flex-col gap-y-5">
           <SlideUp amount={0.3}>
             <div className="flex gap-5 justify-center">
-              <SmallSquare icon={'/icons/linkedin.svg'} subtitle="LinkedIn"/>
-              <SmallSquare icon={'/icons/ig.svg'} subtitle="Instagram"/>
-              <SmallSquare icon={'/icons/github.svg'} subtitle="GitHub"/>
+              <SmallSquare icon={'/icons/linkedin.svg'} subtitle="LinkedIn" openLink='https://www.linkedin.com/in/nadiejcp/'/>
+              <SmallSquare icon={'/icons/ig.svg'} subtitle="Instagram" openLink='https://www.instagram.com/nadiejcp7'/>
+              <SmallSquare icon={'/icons/github.svg'} subtitle="GitHub" openLink='https://github.com/nadiejcp'/>
             </div>
           </SlideUp>
           <SlideUp amount={0.1}>
             <div className="flex gap-5 justify-center">
-              <SmallSquare icon={'/icons/twitch.svg'} subtitle="Twitch"/>
-              <SmallSquare icon={'/icons/fb.svg'} subtitle="Facebook"/>
-              <SmallSquare icon={'/icons/twitter.svg'} subtitle="X"/>
+              <SmallSquare icon={'/icons/twitch.svg'} subtitle="Twitch" openLink='https://www.twitch.tv/nadiejcp'/>
+              <SmallSquare icon={'/icons/fb.svg'} subtitle="Facebook" openLink='https://www.facebook.com/nadiejcp7'/>
+              <SmallSquare icon={'/icons/x.svg'} subtitle="X" openLink='https://x.com/JairoCP_'/>
             </div>
           </SlideUp>
         </div>
