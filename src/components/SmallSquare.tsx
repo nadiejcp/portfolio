@@ -18,7 +18,7 @@ export default function SmallSquare({ title, subtitle, icon, link, openLink }: S
           link
             ? () => {
                 const a = document.createElement('a');
-                a.href = `/${link}`;
+                a.href = `./${link}`;
                 a.download = link;
                 a.click();
               }
