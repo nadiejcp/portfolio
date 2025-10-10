@@ -6,10 +6,23 @@ import SlideDown from "@/components/SlideDown";
 import SlideUp from "@/components/SlideUp";
 import SmallLink from "@/components/SmallLink";
 import SmallSquare from "@/components/SmallSquare";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function About() {
   const { language, setLanguage } = useLanguage();
+  const [projectQuantity, setProjectQuantity] = useState(0);
+
+  useEffect(() => {
+    const fetchProjectQuantity = async () => {
+      const response = await fetch('/projects.txt')
+      const text = await response.text()
+      const projectsArray = text
+          .split('\n')
+          .filter((line) => { return line.trim(); });
+      setProjectQuantity(projectsArray.length);
+    };
+    fetchProjectQuantity();
+  }, []);
 
   useEffect(() => {
     const lang = localStorage.getItem('language');
@@ -57,7 +70,7 @@ export default function About() {
       </SlideDown>
       <SlideUp amount={0.5}>
         <BigSquare blur={false} title={''} subtitle={''} width="100%">
-          <SmallSquare title={"+20"} subtitle={translations.projects}/>
+          <SmallSquare title={String(projectQuantity)} subtitle={translations.projects}/>
           <SmallSquare title={"+5"} subtitle={translations.experience}/>
           <SmallSquare title={"CV"} subtitle={translations.download} link={language === 'EN' ? 'cv.pdf' : 'cv_es.pdf'}/>
         </BigSquare>
