@@ -39,10 +39,17 @@ const Project = () => {
   const [projectScreens, setProjectScreens] = useState<Service[]>([]);
   const [projectInfo, setProjectInfo] = useState<string[]>([]);
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [shouldRedirect, setShouldRedirect] = useState(false);
+
+  useEffect(() => {
+    const lang = localStorage.getItem('language');
+    if (lang){
+      setLanguage(lang);
+    }
+  }, [setLanguage]);
 
   const translations = {
     keys: language === 'EN' ? 'Key Technologies & Skills' : 'Habilidades y herramientas tecnológicas',
