@@ -62,7 +62,7 @@ export default function Home() {
           <BigSquare blur={false} title={translations.programming} subtitle={''} width="50%">
             <Medallion title={'7'}/>
           </BigSquare>
-          <BigSquare blur={true} icon={'./jairo.jpg'} title={translations.title2} subtitle={translations.subTitle2} width="50%">
+          <BigSquare blur={true} icon={'/jairo.jpg'} title={translations.title2} subtitle={translations.subTitle2} width="50%">
           </BigSquare>
         </div>
       </SlideDown>
