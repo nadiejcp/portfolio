@@ -70,7 +70,7 @@ export default function Home() {
         <BigSquare blur={false} title={translations.title2} subtitle={''} width="100%">
           <SmallSquare title={String(projectQuantity)} subtitle={translations.projects}/>
           <SmallSquare title={"+5"} subtitle={translations.experience}/>
-          <SmallSquare title={"CV"} subtitle={translations.download} link={language === 'EN' ? 'cv.pdf' : 'cv_es.pdf'}/>
+          <SmallSquare title={"CV"} subtitle={translations.download} link={language === 'EN' ? './CV_Jairo_Cabrera.pdf' : './CV_Jairo_Cabrera_ES.pdf'}/>
         </BigSquare>
       </SlideUp>
       <SlideUp amount={0.5}>

@@ -62,7 +62,7 @@ const SideBar = () => {
                     setLanguage((prev) => prev === 'EN' ? 'ES' : 'EN');
                     localStorage.setItem('language', language === 'EN' ? 'ES' : 'EN');
                 }}>
-                <Image src={'/globe.svg'} alt='language icon' width={30} height={30}/>
+                <Image src={'./globe.svg'} alt='language icon' width={30} height={30}/>
                 <p className="pl-3">{language === 'ES' ? expanded ? 'Español' : 'ES' : expanded ? 'English' : 'EN'}</p>
             </div>
         </div>
