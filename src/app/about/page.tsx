@@ -98,17 +98,17 @@ export default function About() {
           <BigSquare blur={false} title={translations.title} subtitle={''} width="50%">
             <div className="flex flex-col gap-y-5">
               <div className="flex gap-5 justify-center">
-                <SmallLink title={"GitHub"} icon={"/icons/github.svg"} link='https://github.com/nadiejcp'/>
-                <SmallLink title={"Twitch"} icon={"/icons/twitch.svg"} link='https://www.twitch.tv/nadiejcp'/>
-                <SmallLink title={"Email"} icon={"/icons/mail.svg"} link='mailto:jairocabrera87@hotmail.com'/>
+                <SmallLink title={"GitHub"} icon={"./icons/github.svg"} link='https://github.com/nadiejcp'/>
+                <SmallLink title={"Twitch"} icon={"./icons/twitch.svg"} link='https://www.twitch.tv/nadiejcp'/>
+                <SmallLink title={"Email"} icon={"./icons/mail.svg"} link='mailto:jairocabrera87@hotmail.com'/>
               </div>
               <div className="flex gap-5 justify-center">
-                <SmallLink title={"LinkedIn"} icon={"/icons/linkedin.svg"} link='https://www.linkedin.com/in/nadiejcp/'/>
-                <SmallLink title={"WhatsApp"} icon={"/icons/wpp.svg"} link='https://wa.me/+593988988079'/>
+                <SmallLink title={"LinkedIn"} icon={"./icons/linkedin.svg"} link='https://www.linkedin.com/in/nadiejcp/'/>
+                <SmallLink title={"WhatsApp"} icon={"./icons/wpp.svg"} link='https://wa.me/+593988988079'/>
               </div>
               <div className="flex gap-5 justify-center">
-                <SmallLink title={"Instagram"} icon={"/icons/ig.svg"} link='https://www.instagram.com/nadiejcp7'/>
-                <SmallLink title={translations.iconTitle} icon={"/icons/phone.svg"} link='tel:+593988988079'/>
+                <SmallLink title={"Instagram"} icon={"./icons/ig.svg"} link='https://www.instagram.com/nadiejcp7'/>
+                <SmallLink title={translations.iconTitle} icon={"./icons/phone.svg"} link='tel:+593988988079'/>
               </div>
             </div>
           </BigSquare>
