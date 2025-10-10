@@ -56,7 +56,7 @@ export default function Home() {
         </div>
       </SlideDown>
       <SlideUp amount={0.3}>
-        <BigSquare blur={false} title={translations.title2} subtitle={translations.subTitle2} width="100%">
+        <BigSquare blur={false} title={translations.title2} subtitle={''} width="100%">
           <SmallSquare title={"+20"} subtitle={translations.projects}/>
           <SmallSquare title={"+5"} subtitle={translations.experience}/>
           <SmallSquare title={"CV"} subtitle={translations.download} link={language === 'EN' ? 'cv.pdf' : 'cv_es.pdf'}/>

@@ -21,7 +21,7 @@ const SideBar = () => {
     const [ expanded, setExpanded ] = useState(false);
     const icons = language === 'EN' ? ['Home', 'Projects'] : ['Inicio', 'Proyectos']
     const icons2 = language === 'EN' ? ['About me', 'Contact me'] : ['Sobre mi', 'Contactame']
-    const description = language === 'EN' ? 'AI Developer' : 'Desarrollador IA';
+    const description = language === 'EN' ? 'Software Developer' : 'Desarrollador de Software';
 
     useEffect(() => {
         const lang = localStorage.getItem('language');
@@ -45,7 +45,7 @@ const SideBar = () => {
                 height={100} 
                 className="rounded-full"/>
                 {expanded && <div className="flex flex-col pl-5">
-                    <p>Jairo Cabrera</p>
+                    <p className="text-bold">Jairo Cabrera</p>
                     <p>{description}</p>
                 </div>}
             </div>
