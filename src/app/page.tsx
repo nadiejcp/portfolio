@@ -26,10 +26,12 @@ export default function Home() {
     passion7: language === 'EN' ? 'Eat' : 'Comer',
     passion8: language === 'EN' ? 'Videogames' : 'Videojuegos'
   }
-
+ 
   useEffect(() => {
     const lang = localStorage.getItem('language');
-    setLanguage(lang ? lang : 'EN');
+    if (lang){
+      setLanguage(lang);
+    }
   }, [setLanguage]);
 
   return (
