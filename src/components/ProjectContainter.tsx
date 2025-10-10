@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useProject } from './ProjectContext';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from './LanguageContext';
+import { useEffect } from 'react';
 
 interface Project {
   id: number;
@@ -18,10 +19,17 @@ type ContainerProps = {
 type TranslationKey = 'W' | 'W1' | 'D';
 
 const ProjectContainer = ({ project }: ContainerProps) => {
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const { setProject } = useProject();
   const router = useRouter();
-  
+
+  useEffect(() => {
+    const lang = localStorage.getItem('language');
+    if (lang){
+      setLanguage(lang);
+    }
+  }, [setLanguage]);
+
   const translations: Record<TranslationKey, string> = {
     W: language === 'EN' ? 'WebSite' : 'Página Web',
     W1: language === 'EN' ? 'FullStack WebSite' : 'Página Web FullStack',
