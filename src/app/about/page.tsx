@@ -6,9 +6,18 @@ import SlideDown from "@/components/SlideDown";
 import SlideUp from "@/components/SlideUp";
 import SmallLink from "@/components/SmallLink";
 import SmallSquare from "@/components/SmallSquare";
+import { useEffect } from "react";
 
 export default function About() {
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
+
+  useEffect(() => {
+    const lang = localStorage.getItem('language');
+    if (lang){
+      setLanguage(lang);
+    }
+  }, [setLanguage]);
+
   const traductions = {
     title: language === 'EN' ? 'Projects made by Me' : 'Proyectos hechos por este pecho'
   }
