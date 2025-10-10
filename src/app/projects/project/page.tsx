@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatedServices } from "@/components/animated-services";
+import { AnimatedServices } from "@/components/AnimatedServices";
 import Clients from "@/components/Clients";
 import { useLanguage } from "@/components/LanguageContext";
 import LoadingSpinner from "@/components/Loading";
