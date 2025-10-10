@@ -35,8 +35,9 @@ export default function About() {
               typo: typo || 'W',
               url: url || '',
             }
-          })
-        setProjects(projectsArray)
+          });
+        const validProjects = projectsArray.filter(isValidProject);
+        setProjects(validProjects)
       } catch (error) {
         console.error('Error loading projects:', error)
       } finally {
@@ -75,5 +76,15 @@ export default function About() {
           </SlideUp>
       )}
     </div>
+  );
+}
+
+function isValidProject(data: { id: number; name: string; title: string; typo: string; url: string }): data is Project {
+  return (
+    typeof data.id === 'number' &&
+    typeof data.name === 'string' &&
+    typeof data.title === 'string' &&
+    (data.typo === 'W' || data.typo === 'W1' || data.typo === 'D') &&
+    typeof data.url === 'string'
   );
 }

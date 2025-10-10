@@ -15,7 +15,7 @@ const BigSquare = ({icon, title, subtitle, width, blur, children} : bigSquarePro
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         height: '50vh',
-        width: {width},
+        width: width,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'

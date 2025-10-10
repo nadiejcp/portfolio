@@ -80,11 +80,11 @@ const Project = () => {
           .split('\n')
           .filter((line) => line.trim())
           .map((line) => {
-            const [name, description, subtitle, src] = line.split('%').map((item) => item.trim());
+            const [name, subtitle, description, src] = line.split('%').map((item) => item.trim());
             return {
-              name: name || '',
-              description: description || '',
-              subtitle: subtitle || '',
+              name: name ? (language === 'EN' ? name.split('--')[0] : name.split('--')[1]) : '',
+              description: description ? (language === 'EN' ? description.split('--')[0] : description.split('--')[1]) : '',
+              subtitle: subtitle ? (language === 'EN' ? subtitle.split('--')[0] : subtitle.split('--')[1]) : '',
               src: src ? `/projects/${project.name}/${project.name}${src}` : ''
             };
           });
