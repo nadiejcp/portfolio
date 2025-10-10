@@ -45,7 +45,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchProjectQuantity = async () => {
-      const response = await fetch('/projects.txt')
+      const response = await fetch('./projectsInformation.txt')
       const text = await response.text()
       const projectsArray = text
           .split('\n')

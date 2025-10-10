@@ -21,7 +21,7 @@ export default function About() {
   useEffect(() => {
     async function loadProjects() {
       try {
-        const response = await fetch('./projects.txt')
+        const response = await fetch('./projectsInformation.txt')
         const text = await response.text()
         const projectsArray = text
           .split('\n')

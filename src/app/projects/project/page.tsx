@@ -85,7 +85,7 @@ const Project = () => {
               name: name ? (language === 'EN' ? name.split('--')[0] : name.split('--')[1]) : '',
               description: description ? (language === 'EN' ? description.split('--')[0] : description.split('--')[1]) : '',
               subtitle: subtitle ? (language === 'EN' ? subtitle.split('--')[0] : subtitle.split('--')[1]) : '',
-              src: src ? `/projects/${project.name}/${project.name}${src}` : ''
+              src: src ? `./projects/${project.name}/${project.name}${src}` : ''
             };
           });
         setProjectScreens(projectsArray);
