@@ -2,6 +2,7 @@
 
 import LoadingSpinner from "@/components/Loading";
 import ProjectContainer from "@/components/ProjectContainter";
+import { PROJECTS } from "@/components/ProjectContext";
 import SlideDown from "@/components/SlideDown";
 import SlideUp from "@/components/SlideUp";
 import { useEffect, useState } from "react";
@@ -21,22 +22,7 @@ export default function About() {
   useEffect(() => {
     async function loadProjects() {
       try {
-        const response = await fetch('./projectsInformation.txt')
-        const text = await response.text()
-        const projectsArray = text
-          .split('\n')
-          .filter((line) => { return line.trim(); })
-          .map((line) => {
-            const [id, name, title, typo, url] = line.split(',').map((item) => { return item.trim(); })
-            return {
-              id: Number(id) || 0,
-              name: name || '',
-              title: title || '',
-              typo: typo || 'W',
-              url: url || '',
-            }
-          });
-        const validProjects = projectsArray.filter(isValidProject);
+        const validProjects = PROJECTS.filter(isValidProject);
         setProjects(validProjects)
       } catch (error) {
         console.error('Error loading projects:', error)

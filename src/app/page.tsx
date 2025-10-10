@@ -7,11 +7,11 @@ import SlideDown from "@/components/SlideDown";
 import SlideUp from "@/components/SlideUp";
 import SmallLink from "@/components/SmallLink";
 import SmallSquare from "@/components/SmallSquare";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { PROJECTS } from '@/components/ProjectContext';
 
 export default function Home() {
   const { language, setLanguage } = useLanguage();
-  const [projectQuantity, setProjectQuantity] = useState(0);
   const translations = {
     title: language === 'EN' ? 'Projects made by Me' : 'Proyectos hechos por este pecho',
     subTitle: language === 'EN' ? '+35 projects' : '+35 proyectos',
@@ -43,18 +43,6 @@ export default function Home() {
     }
   }, [setLanguage]);
 
-  useEffect(() => {
-    const fetchProjectQuantity = async () => {
-      const response = await fetch('./projectsInformation.txt')
-      const text = await response.text()
-      const projectsArray = text
-          .split('\n')
-          .filter((line) => { return line.trim(); });
-      setProjectQuantity(projectsArray.length);
-    };
-    fetchProjectQuantity();
-  }, []);
-
   return (
     <div className="w-full m-10 flex flex-col gap-10">
       <SlideDown>
@@ -68,7 +56,7 @@ export default function Home() {
       </SlideDown>
       <SlideUp amount={0.3}>
         <BigSquare blur={false} title={translations.title2} subtitle={''} width="100%">
-          <SmallSquare title={String(projectQuantity)} subtitle={translations.projects}/>
+          <SmallSquare title={String(PROJECTS.length)} subtitle={translations.projects}/>
           <SmallSquare title={"+5"} subtitle={translations.experience}/>
           <SmallSquare title={"CV"} subtitle={translations.download} link={language === 'EN' ? 'CV_Jairo_Cabrera.pdf' : 'CV_Jairo_Cabrera_ES.pdf'}/>
         </BigSquare>

@@ -17,6 +17,35 @@ interface ProjectContextType {
 
 const ProjectContext = createContext<ProjectContextType | undefined>(undefined);
 
+// Projects list — mapped from CSV lines provided by the user.
+// CSV format: id,slug,name,tag,url
+// Mapping assumptions: "name" -> slug, "title" -> display name, "typo" -> tag
+export const PROJECTS: Project[] = [
+  {
+    id: 1,
+    name: 'plus',
+    title: 'Plus Service & Notary',
+    typo: 'W1',
+    url: 'https://www.plusnotary.net/',
+  },
+  {
+    id: 2,
+    name: 'construction',
+    title: 'Darwin Construction Inc',
+    typo: 'W',
+    url: 'https://www.darwinconstruction.com/',
+  },
+  {
+    id: 3,
+    name: 'server',
+    title: 'Local Cloud',
+    typo: 'W1',
+    url: 'https://github.com/nadiejcp/server',
+  },
+];
+
+export const getProjectById = (id: number) => PROJECTS.find((p) => p.id === id);
+
 export const ProjectProvider = ({ children }: { children: ReactNode }) => {
   const [project, setProject] = useState({
     id: 0,
