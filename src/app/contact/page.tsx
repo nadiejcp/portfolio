@@ -5,9 +5,18 @@ import { useLanguage } from "@/components/LanguageContext";
 import SlideDown from "@/components/SlideDown";
 import SlideUp from "@/components/SlideUp";
 import SmallSquare from "@/components/SmallSquare";
+import { useEffect } from "react";
 
 export default function About() {
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
+
+  useEffect(() => {
+    const lang = localStorage.getItem('language');
+    if (lang){
+      setLanguage(lang);
+    }
+  }, [setLanguage]);
+
   const translations = {
     contact: language === 'EN' ? 'CONTACT ME' : 'CONTACTO',
     social: language === 'EN' ? 'SOCIAL NETWORKS' : 'REDES SOCIALES',
