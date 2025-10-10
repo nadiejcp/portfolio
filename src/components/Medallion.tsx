@@ -6,7 +6,7 @@ interface MedallionProps {
 
 const Medallion = ({title, subtitle}: MedallionProps) => {
   return (
-    <div className="z-20 bg-[radial-gradient(circle_farthest-corner_at_0%_0%,#48494a,#262627)] rounded-full flex flex-col justify-center items-center w-[200px] min-w-[150px] h-[200px] min-h-[150px] relative shadow-inner-custom self-center">
+    <div className="border-gray-600 border-1 shadow-[0_0_25px_rgba(255,255,255,0.3)] z-20 bg-[radial-gradient(circle_farthest-corner_at_0%_0%,#48494a,#262627)] rounded-full flex flex-col justify-center items-center w-[200px] min-w-[150px] h-[200px] min-h-[150px] relative shadow-inner-custom self-center">
       <div>{title}</div>
       <div>{subtitle}</div>
     </div>

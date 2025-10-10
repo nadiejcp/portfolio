@@ -2,6 +2,8 @@
 
 import LoadingSpinner from "@/components/Loading";
 import ProjectContainer from "@/components/ProjectContainter";
+import SlideDown from "@/components/SlideDown";
+import SlideUp from "@/components/SlideUp";
 import { useEffect, useState } from "react";
 
 interface Project {
@@ -49,16 +51,29 @@ export default function About() {
   const containers = Math.trunc(projects.length / 3) + 1;
   return (
     <div className="w-full m-10 flex flex-col gap-10">
-      {Array.from({ length: containers }).map((_, i) => (
-        <div className="flex justify-evenly" key={i}>
-          {Array.from({ length: Math.min(3, projects.length - 3*i)}).map((_, j) => (
-            <ProjectContainer
-              key={`project-${j}`}
-              project={projects[i*3+j]}
-            />
-          ))}
-        </div>
-      ))}
+      {Array.from({ length: containers }).map((_, i) =>
+        i === 0 ?
+          <SlideDown amount={0.3} key={`slider-${i}`}>
+            <div className="flex justify-evenly" key={i}>
+              {Array.from({ length: Math.min(3, projects.length - 3*i)}).map((_, j) => (
+                <ProjectContainer
+                  key={`project-${j}`}
+                  project={projects[i*3+j]}
+                />
+              ))}
+            </div>
+          </SlideDown> :
+          <SlideUp amount={0.5} key={`slider-${i}`}>
+            <div className="flex justify-evenly" key={i}>
+              {Array.from({ length: Math.min(3, projects.length - 3*i)}).map((_, j) => (
+                <ProjectContainer
+                  key={`project-${j}`}
+                  project={projects[i*3+j]}
+                />
+              ))}
+            </div>
+          </SlideUp>
+      )}
     </div>
   );
 }

@@ -1,9 +1,11 @@
 "use client";
 
 import { AnimatedServices } from "@/components/animated-services";
+import Clients from "@/components/Clients";
 import { useLanguage } from "@/components/LanguageContext";
 import LoadingSpinner from "@/components/Loading";
 import { useProject } from "@/components/ProjectContext";
+import SlideUp from "@/components/SlideUp";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -16,14 +18,38 @@ type Service = {
   src: string;
 };
 
+type Testimonial = {
+  name: string;
+  comment: string[];
+};
+
+const TwoChildren = ({ title, children }: {title: string, children: React.ReactNode }) => {
+  return (
+    <div className="bg-[#1d1d1d] p-2 flex flex-col mt-5 w-[40%] rounded-2xl p-5 justify-between pt-8 pb-8">
+      <div className="font-bold">
+        {title}
+      </div>
+      {children}
+    </div>
+  );
+}
+
 const Project = () => {
   const { project, setProject } = useProject();
   const [projectScreens, setProjectScreens] = useState<Service[]>([]);
   const [projectInfo, setProjectInfo] = useState<string[]>([]);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const { language } = useLanguage();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [shouldRedirect, setShouldRedirect] = useState(false);
+
+  const translations = {
+    keys: language === 'EN' ? 'Key Technologies & Skills' : 'Habilidades y herramientas tecnológicas',
+    description: language === 'EN' ? 'Project Description' : 'Descripción del Proyecto',
+    short: language === 'EN' ? 'Short Description' : 'Descripción Corta',
+    click: language === 'EN' ? 'Click me' : 'Haz click aquí',
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -66,7 +92,15 @@ const Project = () => {
         const projectsArray = text
           .split('\n')
           .filter((line) => line.trim());
-        console.log('asdasd', projectsArray)
+        const titles = projectsArray.length > 1 ? (language === 'EN' ? projectsArray[1].split('%')[0] : projectsArray[1].split('%')[1]).split(',').filter((info) => { return info.trim(); }).map((info) => { return info.trim(); }) : [];
+        const comments = projectsArray.length > 2 ? (language === 'EN' ? projectsArray[2].split('%%')[0].split('%') : projectsArray[2].split('%%')[1].split('%')) : [];
+        const testimonialsArray = titles.map((title, index) => {
+          return {
+            name: title,
+            comment: comments[index].split(',').map((info) => { return info.trim(); }) || []
+          };
+        });
+        setTestimonials(testimonialsArray);
         setProjectInfo(projectsArray);
       } catch (error) {
         console.error('Error fetching project info:', error);
@@ -76,9 +110,8 @@ const Project = () => {
     }
 
     getProjectInfo();
-  }, [project, project.name, project.url, setProject]);
+  }, [language, project, project.name, project.url, setProject]);
 
-  // Handle redirect in a separate useEffect
   useEffect(() => {
     if (shouldRedirect) {
       router.push('/projects');
@@ -93,55 +126,36 @@ const Project = () => {
     return <></>;
   }
 
-  const translations = {
-    keys: language === 'EN' ? 'Key Technologies & Skills' : 'Habilidades y herramientas tecnologicas',
-    description: language === 'EN' ? 'Project Description' : 'Descripción del Proyecto',
-  };
-
   return (
-    <div className="w-full m-10 flex flex-col gap-4">
-      <div className="bg-[#1d1d1d] p-2 flex justify-center">
-        {project.title}
-      </div>
-      <div className="flex justify-center mt-5 space-evenly w-full">
-        <div className="bg-[#1d1d1d] p-2 flex justify-center w-[40%]">
-          {projectInfo.length && projectInfo[0]}
+    <div className="w-[100%] m-10 flex flex-col gap-4">
+      <SlideUp>
+        <div className="bg-[#1d1d1d] p-2 flex justify-center text-4xl rounded-2xl font-bold">
+          {project.title}
         </div>
-        <Link href={project.url} target="_blank" className="bg-[#1d1d1d] p-2 flex justify-center cursor-pointer">
-          <Image 
-            src={`/projects/${project.name}.png`} 
-            alt='' 
-            width={100} 
-            height={100}
-            style={{
-              width: '100%',
-              height: '60%',
-              objectFit: 'cover',
-            }}
-          />
-        </Link>
-      </div>
-      <div className="flex w-full justify-evenly">
-        <div className="bg-[#1d1d1d] p-2 flex flex-col justify-center mt-5">
-          <div>
-            {translations.keys}
-          </div>
-          <div>
-            {projectInfo.length > 1 && projectInfo[1].split(',').filter((info) => { return info.trim(); }).map((info) => {
-              return <div key={info}>{info}</div>
-            })}
-          </div>
+        <div className="flex justify-center mt-5 justify-evenly w-full">
+          <Link href={project.url} target="_blank" className="transition-transform duration-300 ease-in-out hover:-translate-y-3 hover:bg-[#222] rounded-2xl bg-[#1d1d1d] w-[40%] p-2 flex justify-center cursor-pointer flex-col items-center gap-5">
+            <div>{translations.click}</div>
+            <Image 
+              src={`/projects/${project.name}.png`} 
+              alt='' 
+              width={100} 
+              height={100}
+              style={{
+                width: '80%',
+                height: '60%',
+                objectFit: 'contain',
+              }}
+            />
+          </Link>
+          <TwoChildren title={translations.short}>
+            <div>
+              {projectInfo.length && language === 'EN' ? projectInfo[0].split('%')[0] : projectInfo[0].split('%')[1]}
+            </div>
+          </TwoChildren>
         </div>
-        <div className="bg-[#1d1d1d] p-2 flex flex-col justify-center mt-5">
-          <div>
-            {translations.description}
-          </div>
-          <div>
-            {projectInfo.length > 2 && <div key={projectInfo[2]}>{projectInfo[2]}</div>}
-          </div>
-        </div>
-      </div>
+      </SlideUp>
       <AnimatedServices services={projectScreens} autoplay={true} />
+      <Clients testimonials={testimonials} title={translations.keys} />
     </div>
   );
 };

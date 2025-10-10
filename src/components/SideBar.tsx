@@ -50,7 +50,10 @@ const SideBar = () => {
                 {iconRender(icons2[0], `/sobre mi.svg`, expanded, '/about')}
                 {iconRender(icons2[1], `/contactame.svg`, expanded, '/contact')}
             </div>
-            <div className="mt-10 flex items-center cursor-pointer pl-7" onClick={() => {setLanguage((prev) => prev === 'EN' ? 'ES' : 'EN')}}>
+            <div className="mt-10 flex items-center cursor-pointer pl-7" onClick={() => {
+                    setLanguage((prev) => prev === 'EN' ? 'ES' : 'EN');
+                    localStorage.setItem('language', language === 'EN' ? 'ES' : 'EN');
+                }}>
                 <Image src={'/globe.svg'} alt='language icon' width={30} height={30}/>
                 <p className="pl-3">{language === 'ES' ? expanded ? 'Español' : 'ES' : expanded ? 'English' : 'EN'}</p>
             </div>
