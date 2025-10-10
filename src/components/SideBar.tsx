@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "./LanguageContext";
 import Link from "next/link";
 
@@ -22,6 +22,14 @@ const SideBar = () => {
     const icons = language === 'EN' ? ['Home', 'Projects'] : ['Inicio', 'Proyectos']
     const icons2 = language === 'EN' ? ['About me', 'Contact me'] : ['Sobre mi', 'Contactame']
     const description = language === 'EN' ? 'AI Developer' : 'Desarrollador IA';
+
+    useEffect(() => {
+        const lang = localStorage.getItem('language');
+        if (lang){
+            setLanguage(lang);
+        }
+    }, [setLanguage]);
+
     return (
         <div className={`ml-10 p-[30px] mt-10 w-fit rounded-xl bg-[#1d1d1d] flex flex-col items-left transition-all duration-500 h-fit`}
             onMouseEnter={() => setExpanded(true)}
