@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     unoptimized: true
   },
   trailingSlash: true,
-  basePath: '/portfolio', // ← Add this line
+  basePath: '/portfolio',
 };
 
 export default nextConfig;
