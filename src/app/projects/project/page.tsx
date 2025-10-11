@@ -61,7 +61,7 @@ const Project = () => {
         return;
       }
     }
-    
+
     function fetchTestimonials() {
       const testimonialsArray: Testimonial[] = (language === 'EN' ? project.techStackTitles : project.techStackTitlesES).map(
         (title, index) => {
@@ -117,7 +117,7 @@ const Project = () => {
           </Link>
           <TwoChildren title={translations.short}>
             <div>
-              {projectInfo.length && language === 'EN' ? projectInfo[0].split('%')[0] : projectInfo[0].split('%')[1]}
+              {project.shortDescription.split('--')[language === 'EN' ? 0 : 1]}
             </div>
           </TwoChildren>
         </div>
