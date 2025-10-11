@@ -17,7 +17,7 @@ interface Project {
   techStackTitles: string[];
   techStackTitlesES: string[];
   techStackDetails: string[];
-  techStackDetailesES: string[];
+  techStackDetailsES: string[];
   screens: {
     name: string;
     description: string;
