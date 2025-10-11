@@ -13,8 +13,6 @@ import { PROJECTS } from '@/components/ProjectContext';
 export default function Home() {
   const { language, setLanguage } = useLanguage();
   const translations = {
-    title: language === 'EN' ? 'Projects made by Me' : 'Proyectos hechos por este pecho',
-    subTitle: language === 'EN' ? '+35 projects' : '+35 proyectos',
     title2: language === 'EN' ? 'About Me' : 'Sobre mí',
     subTitle2: language === 'EN' ? 'I love adventures' : 'Me gusta aventurar',
     iconTitle: language === 'EN' ? 'Call me' : 'Contáctame',
@@ -28,8 +26,8 @@ export default function Home() {
     passion8: language === 'EN' ? 'Videogames' : 'Videojuegos',
     experience: language === 'EN' ? 'years of experience' : 'años de experiencia',
     download: language === 'EN' ? 'Download CV' : 'Descargar CV',
-    projects: language === 'EN' ? 'Projects' : 'Proyectos',
-    programming: language === 'EN' ? 'Programming Languages' : 'Lenguages de Programación',
+    projects: language === 'EN' ? 'Projects made by me' : 'Proyectos hechos por mí',
+    programming: language === 'EN' ? 'Programming Languages' : 'Lenguajes de Programación',
     title3: language === 'EN' ? 'My hobbies' : 'Mis hobbies',
     subTitle3: language === 'EN' ? '' : '',
     title4: language === 'EN' ? 'Check my social profile' : 'Revisa mis redes sociales',
@@ -47,16 +45,16 @@ export default function Home() {
     <div className="w-full m-10 flex flex-col gap-10">
       <SlideDown>
         <div className="flex justify-center gap-x-10">
-          <BigSquare blur={false} title={translations.title} subtitle={''} width="50%">
+          <BigSquare blur={false} title={translations.projects} subtitle={''} width="50%">
             <Medallion title={String(PROJECTS.length)}/>
           </BigSquare>
-          <BigSquare blur={true} icon={'./jairo.jpg'} title={translations.title2} subtitle={translations.subTitle2} width="50%">
+          <BigSquare blur={true} icon={'/portfolio/jairo.jpg'} title={translations.title2} subtitle={translations.subTitle2} width="100%">
           </BigSquare>
         </div>
       </SlideDown>
       <SlideUp amount={0.3}>
         <BigSquare blur={false} title={translations.title2} subtitle={''} width="100%">
-          <SmallSquare title={String(PROJECTS.length)} subtitle={translations.projects}/>
+          <SmallSquare title={'7'} subtitle={translations.programming}/>
           <SmallSquare title={"+5"} subtitle={translations.experience}/>
           <SmallSquare title={"CV"} subtitle={translations.download} link={language === 'EN' ? 'CV_Jairo_Cabrera.pdf' : 'CV_Jairo_Cabrera_ES.pdf'}/>
         </BigSquare>

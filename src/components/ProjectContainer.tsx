@@ -54,7 +54,7 @@ const ProjectContainer = ({ project }: ContainerProps) => {
       localStorage.setItem('project', JSON.stringify(project));
       router.push('/projects/project');
     }}>
-      <Image src={`./projects/${project.name}.png`} alt='' width={100} height={100}
+      <Image src={`/portfolio/projects/${project.name}.png`} alt='' width={100} height={100}
       style={{
         width: '100%',
         height: '60%',
