@@ -92,7 +92,7 @@ export const AnimatedServices = ({
                   className="absolute inset-0 origin-bottom"
                 >
                   <Image
-                    src={`./${name}/${name}${service.image}`}
+                    src={`/portfolio/projects/${name}/${name}${service.image}`}
                     alt={service.name}
                     width={700}
                     height={354}

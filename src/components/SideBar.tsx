@@ -39,7 +39,7 @@ const SideBar = () => {
             }}
         >
             <div className="flex items-center">
-                <Image src='/avatar.jpg'
+                <Image src='./avatar.jpg'
                 alt='Picture of Jairo Cabrera'
                 width={100}
                 height={100}
