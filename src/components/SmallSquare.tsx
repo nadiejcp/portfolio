@@ -27,7 +27,7 @@ export default function SmallSquare({ title, subtitle, icon, link, openLink }: S
       >
         {icon ? <Image src={icon} alt={'Icon for Social Network'} width={50} height={50}/> 
         : <p className="text-[48px] bg-gradient-to-br from-white via-gray-500 to-white bg-clip-text text-transparent">{title}</p>}
-        <p className="text-[18px]">{subtitle}</p>
+        <p className="text-[18px] text-center">{subtitle}</p>
       </div>
     );
 }

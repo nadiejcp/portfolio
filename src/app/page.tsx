@@ -24,7 +24,7 @@ export default function Home() {
     passion6: language === 'EN' ? 'Memes' : 'Memes',
     passion7: language === 'EN' ? 'Eat' : 'Comer',
     passion8: language === 'EN' ? 'Videogames' : 'Videojuegos',
-    experience: language === 'EN' ? 'years of experience' : 'años de experiencia',
+    experience: language === 'EN' ? 'Years of Experience' : 'Años de Experiencia',
     download: language === 'EN' ? 'Download CV' : 'Descargar CV',
     projects: language === 'EN' ? 'Projects made by me' : 'Proyectos hechos por mí',
     programming: language === 'EN' ? 'Programming Languages' : 'Lenguajes de Programación',
@@ -82,17 +82,17 @@ export default function Home() {
           <BigSquare blur={false} title={translations.title4} subtitle={translations.subTitle4} width="50%">
             <div className="flex flex-col gap-y-5">
               <div className="flex gap-5 justify-center">
-                <SmallLink title={"GitHub"} icon={"./icons/github.svg"} link='https://github.com/nadiejcp'/>
-                <SmallLink title={"Twitch"} icon={"./icons/twitch.svg"} link='https://www.twitch.tv/nadiejcp'/>
-                <SmallLink title={"Email"} icon={"./icons/mail.svg"} link='mailto:jairocabrera87@hotmail.com'/>
+                <SmallLink title={"GitHub"} icon={"/portfolio/icons/github.svg"} link='https://github.com/nadiejcp'/>
+                <SmallLink title={"Twitch"} icon={"/portfolio/icons/twitch.svg"} link='https://www.twitch.tv/nadiejcp'/>
+                <SmallLink title={"Email"} icon={"/portfolio/icons/mail.svg"} link='mailto:jairocabrera87@hotmail.com'/>
               </div>
               <div className="flex gap-5 justify-center">
-                <SmallLink title={"LinkedIn"} icon={"./icons/linkedin.svg"} link='https://www.linkedin.com/in/nadiejcp/'/>
-                <SmallLink title={"WhatsApp"} icon={"./icons/wpp.svg"} link='https://wa.me/+593988988079'/>
+                <SmallLink title={"LinkedIn"} icon={"/portfolio/icons/linkedin.svg"} link='https://www.linkedin.com/in/nadiejcp/'/>
+                <SmallLink title={"WhatsApp"} icon={"/portfolio/icons/wpp.svg"} link='https://wa.me/+593988988079'/>
               </div>
               <div className="flex gap-5 justify-center">
-                <SmallLink title={"Instagram"} icon={"./icons/ig.svg"} link='https://www.instagram.com/nadiejcp7'/>
-                <SmallLink title={translations.iconTitle} icon={"./icons/phone.svg"} link='tel:+593988988079'/>
+                <SmallLink title={"Instagram"} icon={"/portfolio/icons/ig.svg"} link='https://www.instagram.com/nadiejcp7'/>
+                <SmallLink title={translations.iconTitle} icon={"/portfolio/icons/phone.svg"} link='tel:+593988988079'/>
               </div>
             </div>
           </BigSquare>
