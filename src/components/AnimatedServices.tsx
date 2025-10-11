@@ -5,22 +5,33 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 import { useEffect, useState, useCallback } from "react";
+import { useLanguage } from "./LanguageContext";
 
 type Service = {
   description: string;
   name: string;
-  subtitle: string;
-  src: string;
+  details: string;
+  image: string;
 };
 
 export const AnimatedServices = ({
   services,
   autoplay,
+  name,
 }: {
   services: Service[];
   autoplay: boolean;
+  name: string;
 }) => {
   const [active, setActive] = useState(0);
+  const {language, setLanguage} = useLanguage();
+
+  useEffect(() => {
+    const lang = localStorage.getItem('language');
+    if (lang){
+      setLanguage(lang);
+    }
+  }, [setLanguage]);
 
   const handleNext = useCallback(() => {
     setActive((prev) => (prev + 1) % services.length);
@@ -50,10 +61,9 @@ export const AnimatedServices = ({
         <div>
           <div className="relative h-80 w-full">
             <AnimatePresence>
-                
               {services.map((service, index) => (
                 <motion.div
-                  key={service.src}
+                  key={`${name}${service.image}`}
                   initial={{
                     opacity: 0,
                     scale: 0.9,
@@ -82,7 +92,7 @@ export const AnimatedServices = ({
                   className="absolute inset-0 origin-bottom"
                 >
                   <Image
-                    src={service.src}
+                    src={`/projects/${name}/${name}${service.image}`}
                     alt={service.name}
                     width={700}
                     height={354}
@@ -115,13 +125,13 @@ export const AnimatedServices = ({
             }}
           >
             <h3 className="text-2xl font-bold text-black dark:text-white">
-              {services[active].name}
+              {language === 'EN' ? services[active].name.split('--')[0] : services[active].name.split('--')[1]}
             </h3>
             <p className="text-sm text-gray-500 dark:text-neutral-500">
-              {services[active].subtitle}
+              {language === 'EN' ? services[active].description.split('--')[0] : services[active].description.split('--')[1]}
             </p>
             <motion.p className="mt-8 text-lg text-gray-500 dark:text-neutral-300">
-              {services[active].description.split(" ").map((word, index) => (
+              {(language === 'EN' ? services[active].details.split('--')[0] : services[active].details.split('--')[1]).split(" ").map((word, index) => (
                 <motion.span
                   key={index}
                   initial={{

@@ -1,7 +1,7 @@
 "use client";
 
 import LoadingSpinner from "@/components/Loading";
-import ProjectContainer from "@/components/ProjectContainter";
+import ProjectContainer from "@/components/ProjectContainer";
 import { PROJECTS } from "@/components/ProjectContext";
 import SlideDown from "@/components/SlideDown";
 import SlideUp from "@/components/SlideUp";
@@ -11,10 +11,20 @@ interface Project {
   id: number;
   name: string;
   title: string;
-  typo: 'W' | 'W1' | 'D';
+  typo: string;
   url: string;
+  shortDescription: string;
+  techStackTitles: string[];
+  techStackTitlesES: string[];
+  techStackDetails: string[];
+  techStackDetailesES: string[];
+  screens: {
+    name: string;
+    description: string;
+    details: string;
+    image: string;
+  }[];
 }
-
 
 export default function About() {
   const [projects, setProjects] = useState<Project[]>([])

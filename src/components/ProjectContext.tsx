@@ -1,6 +1,5 @@
 "use client";
 
-import Server from 'next/dist/server/base-server';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface Project {
@@ -13,7 +12,7 @@ interface Project {
   techStackTitles: string[];
   techStackTitlesES: string[];
   techStackDetails: string[];
-  techStackDetailesES: string[];
+  techStackDetailsES: string[];
   screens: {
     name: string;
     description: string;
@@ -43,7 +42,7 @@ export const PROJECTS: Project[] = [
     techStackTitles: ['Backend & Server', 'Database & Cloud', 'Frontend & Payment', 'DevOps & Deployment'],
     techStackTitlesES: ['Backend & Servidor', 'Base de Datos & Nube', 'Frontend & Pago', 'DevOps & Despliegue'],
     techStackDetails: ['Python, Flask, RESTful API Development, Authentication & Authorization', 'AWS (EC2/RDS), Relational Database (MySQL/SQLite3), Database Design & Management','NextJS, Stripe API Integration, QR Code Generation & Integration', 'Version Control (Git), Web Server Deployment'],
-    techStackDetailesES: ['Python, Flask, Desarrollo de RESTful APIs, Autenticación & Autorización', 'AWS (EC2/RDS), Bases de Datos Relacionales (MySQL/SQLite3), Diseño y Manejo de Bases de Datos', 'NextJS, Integración de Stripe API, Generación e Integración de códigos QR', 'Control de versión (Git), Despliegue de servidores Web'],
+    techStackDetailsES: ['Python, Flask, Desarrollo de RESTful APIs, Autenticación & Autorización', 'AWS (EC2/RDS), Bases de Datos Relacionales (MySQL/SQLite3), Diseño y Manejo de Bases de Datos', 'NextJS, Integración de Stripe API, Generación e Integración de códigos QR', 'Control de versión (Git), Despliegue de servidores Web'],
     screens: [
       {
         name: 'Power of Attorney Portal--Portal de poderes notariales',
@@ -81,7 +80,7 @@ export const PROJECTS: Project[] = [
     techStackTitles: ['Frontend & Framework', 'Core Web Development', 'Performance & Deployment'],
     techStackTitlesES: ['Frontend y Framework', 'Desarrollo Web Avanzado', 'Rendimiento e Implementación'],
     techStackDetails: ['Next.js 15 (App Router),React,Tailwind CSS', 'Responsive Web Design (RWD),Mobile-First Development,Component-Based Architecture', 'Static Site Generation (SSG),Fast Loading & SEO Optimization,Vercel Platform'],
-    techStackDetailesES: ['Next.js 15 (App Router),React,Tailwind CSS', 'Diseño web adaptable (RWD),Desarrollo móvil,Arquitectura basada en componentes', 'Generación de sitios estáticos (SSG),Carga rápida y optimización SEO,Plataforma Vercel'],
+    techStackDetailsES: ['Next.js 15 (App Router),React,Tailwind CSS', 'Diseño web adaptable (RWD),Desarrollo móvil,Arquitectura basada en componentes', 'Generación de sitios estáticos (SSG),Carga rápida y optimización SEO,Plataforma Vercel'],
     screens: [
       {
         name: 'Dynamic Landing Page--Página de destino dinámica',
@@ -119,7 +118,7 @@ export const PROJECTS: Project[] = [
     techStackTitles: ['Backend & Server','Frontend & Interface','Core Functionality','Problem-Solving'],
     techStackTitlesES: ['Backend & Servidor','Frontend & Interfaz','Funcionalidad principal','Solución de Problemas'],
     techStackDetails: ['Node.js,Express.js,RESTful API Development,Local Network Configuration','HTML - CSS - JavaScript,Responsive UI Design,File Upload/Download Handling','Internal File Hosting & Sharing,Network Speed Optimization,Peer-to-Peer Efficiency Solution','Workflow Automation,Bandwidth Constraint Solutions'],
-    techStackDetailesES: ['Node.js,Express.js,Desarrollo de RESTful APIs,Configuración de redes locales','HTML - CSS - JavaScript,Diseño de interfaz de usuario adaptable,Gestión de carga y descarga de archivos','Alojamiento y compartición de archivos internos,Optimización de la velocidad de la red,Solución de eficiencia punto a punto','Automatización del flujo de trabajo,Soluciones para la limitación del ancho de banda.'],
+    techStackDetailsES: ['Node.js,Express.js,Desarrollo de RESTful APIs,Configuración de redes locales','HTML - CSS - JavaScript,Diseño de interfaz de usuario adaptable,Gestión de carga y descarga de archivos','Alojamiento y compartición de archivos internos,Optimización de la velocidad de la red,Solución de eficiencia punto a punto','Automatización del flujo de trabajo,Soluciones para la limitación del ancho de banda.'],
     screens: [
       {
         name: 'Cosmic File Drop--Carga de archivos cósmicos',
@@ -146,12 +145,18 @@ export const ProjectsInfo = [
 export const getProjectById = (id: number) => PROJECTS.find((p) => p.id === id);
 
 export const ProjectProvider = ({ children }: { children: ReactNode }) => {
-  const [project, setProject] = useState({
+  const [project, setProject] = useState<Project>({
     id: 0,
     name: '',
     title: '',
     typo: '',
     url: '',
+    shortDescription: '',
+    techStackTitles: [],
+    techStackTitlesES: [],
+    techStackDetails: [],
+    techStackDetailsES: [],
+    screens: [],
   });
 
   return (

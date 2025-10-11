@@ -8,8 +8,19 @@ interface Project {
   id: number;
   name: string;
   title: string;
-  typo: 'W' | 'W1' | 'D';
+  typo: string;
   url: string;
+  shortDescription: string;
+  techStackTitles: string[];
+  techStackTitlesES: string[];
+  techStackDetails: string[];
+  techStackDetailsES: string[];
+  screens: {
+    name: string;
+    description: string;
+    details: string;
+    image: string;
+  }[];
 }
 
 type ContainerProps = {
@@ -51,7 +62,7 @@ const ProjectContainer = ({ project }: ContainerProps) => {
       }}/>
       <div className='flex flex-col gap-2 mt-3 mb-2'>
         <p>{project.title}</p>
-        <p>{translations[project.typo]}</p>
+        <p>{translations[project.typo as TranslationKey]}</p>
       </div>
     </div>
   );

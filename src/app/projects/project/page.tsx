@@ -11,13 +11,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-type Service = {
-  description: string;
-  name: string;
-  subtitle: string;
-  src: string;
-};
-
 type Testimonial = {
   name: string;
   comment: string[];
@@ -36,8 +29,6 @@ const TwoChildren = ({ title, children }: {title: string, children: React.ReactN
 
 const Project = () => {
   const { project, setProject } = useProject();
-  const [projectScreens, setProjectScreens] = useState<Service[]>([]);
-  const [projectInfo, setProjectInfo] = useState<string[]>([]);
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const { language, setLanguage } = useLanguage();
   const router = useRouter();
@@ -70,53 +61,23 @@ const Project = () => {
         return;
       }
     }
-
-    async function getProjectInfo() {
-      if (!project.name) return;
-      try {
-        const response = await fetch(`./projects/additional/${project.name}-screens.txt`);
-        const text = await response.text();
-        const projectsArray = text
-          .split('\n')
-          .filter((line) => line.trim())
-          .map((line) => {
-            const [name, subtitle, description, src] = line.split('%').map((item) => item.trim());
-            return {
-              name: name ? (language === 'EN' ? name.split('--')[0] : name.split('--')[1]) : '',
-              description: description ? (language === 'EN' ? description.split('--')[0] : description.split('--')[1]) : '',
-              subtitle: subtitle ? (language === 'EN' ? subtitle.split('--')[0] : subtitle.split('--')[1]) : '',
-              src: src ? `./projects/${project.name}/${project.name}${src}` : ''
-            };
-          });
-        setProjectScreens(projectsArray);
-      } catch (error) {
-        console.error('Error fetching project screens:', error);
-        setProjectScreens([]);
-      }
-      try {
-        const response = await fetch(`./projects/additional/${project.name}-general.txt`);
-        const text = await response.text();
-        const projectsArray = text
-          .split('\n')
-          .filter((line) => line.trim());
-        const titles = projectsArray.length > 1 ? (language === 'EN' ? projectsArray[1].split('%')[0] : projectsArray[1].split('%')[1]).split(',').filter((info) => { return info.trim(); }).map((info) => { return info.trim(); }) : [];
-        const comments = projectsArray.length > 2 ? (language === 'EN' ? projectsArray[2].split('%%')[0].split('%') : projectsArray[2].split('%%')[1].split('%')) : [];
-        const testimonialsArray = titles.map((title, index) => {
+    
+    function fetchTestimonials() {
+      const testimonialsArray: Testimonial[] = (language === 'EN' ? project.techStackTitles : project.techStackTitlesES).map(
+        (title, index) => {
           return {
             name: title,
-            comment: comments[index].split(',').map((info) => { return info.trim(); }) || []
+            comment: (language === 'EN'
+              ? project.techStackDetails[index].split(',')
+              : project.techStackDetailsES[index].split(',')
+            ),
           };
-        });
-        setTestimonials(testimonialsArray);
-        setProjectInfo(projectsArray);
-      } catch (error) {
-        console.error('Error fetching project info:', error);
-        setProjectInfo([]);
-      }
+        }
+      );
+      setTestimonials(testimonialsArray);
       setIsLoading(false);
-    }
-
-    getProjectInfo();
+    };
+    fetchTestimonials();
   }, [language, project, project.name, project.url, setProject]);
 
   useEffect(() => {
@@ -161,7 +122,7 @@ const Project = () => {
           </TwoChildren>
         </div>
       </SlideUp>
-      <AnimatedServices services={projectScreens} autoplay={true} />
+      <AnimatedServices services={project.screens} autoplay={true} name={project.name} />
       <Clients testimonials={testimonials} title={translations.keys} />
     </div>
   );
