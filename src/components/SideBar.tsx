@@ -39,7 +39,7 @@ const SideBar = () => {
             }}
         >
             <div className="flex items-center">
-                <Image src='./avatar.jpg'
+                <Image src='/portfolio/avatar.jpg'
                 alt='Picture of Jairo Cabrera'
                 width={100}
                 height={100}
@@ -50,19 +50,19 @@ const SideBar = () => {
                 </div>}
             </div>
             <div className="mt-10 mb-10 flex flex-col gap-7 pl-7">
-                {iconRender(icons[0], `./inicio.svg`, expanded, '/')}
-                {iconRender(icons[1], `./proyectos.svg`, expanded, '/projects')}
+                {iconRender(icons[0], `/portfolio/inicio.svg`, expanded, '/')}
+                {iconRender(icons[1], `/portfolio/proyectos.svg`, expanded, '/projects')}
             </div>
             <div className="mt-2 mb-2 border-1"></div>
             <div className="mt-10 flex flex-col gap-7 pl-7">
-                {iconRender(icons2[0], `./sobre mi.svg`, expanded, '/about')}
-                {iconRender(icons2[1], `./contactame.svg`, expanded, '/contact')}
+                {iconRender(icons2[0], `/portfolio/sobre mi.svg`, expanded, '/about')}
+                {iconRender(icons2[1], `/portfolio/contactame.svg`, expanded, '/contact')}
             </div>
             <div className="mt-10 flex items-center cursor-pointer pl-7" onClick={() => {
                     setLanguage((prev) => prev === 'EN' ? 'ES' : 'EN');
                     localStorage.setItem('language', language === 'EN' ? 'ES' : 'EN');
                 }}>
-                <Image src={'./globe.svg'} alt='language icon' width={30} height={30}/>
+                <Image src={'/portfolio/globe.svg'} alt='language icon' width={30} height={30}/>
                 <p className="pl-3">{language === 'ES' ? expanded ? 'Español' : 'ES' : expanded ? 'English' : 'EN'}</p>
             </div>
         </div>

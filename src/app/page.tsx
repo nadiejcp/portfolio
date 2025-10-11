@@ -47,8 +47,8 @@ export default function Home() {
     <div className="w-full m-10 flex flex-col gap-10">
       <SlideDown>
         <div className="flex justify-center gap-x-10">
-          <BigSquare blur={false} title={translations.programming} subtitle={''} width="50%">
-            <Medallion title={'7'}/>
+          <BigSquare blur={false} title={translations.title} subtitle={''} width="50%">
+            <Medallion title={String(PROJECTS.length)}/>
           </BigSquare>
           <BigSquare blur={true} icon={'./jairo.jpg'} title={translations.title2} subtitle={translations.subTitle2} width="50%">
           </BigSquare>
