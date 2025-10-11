@@ -104,7 +104,7 @@ const Project = () => {
           <Link href={project.url} target="_blank" className="transition-transform duration-300 ease-in-out hover:-translate-y-3 hover:bg-[#222] rounded-2xl bg-[#1d1d1d] w-[40%] p-2 flex justify-center cursor-pointer flex-col items-center gap-5">
             <div>{translations.click}</div>
             <Image 
-              src={`./projects/${project.name}.png`} 
+              src={`./${project.name}.png`} 
               alt='' 
               width={100} 
               height={100}
