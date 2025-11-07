@@ -2,7 +2,7 @@
 
 import Loading from "@/components/Loading";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 const Validate = () => {
 
@@ -43,10 +43,12 @@ const Validate = () => {
   }
 
   return (
-    <div id='information'>
-      <p>{licencia.length ? licencia[0] : ''}</p>
-      <p>{licencia.length > 1 ? licencia[1] : ''}</p>
-    </div>
+    <Suspense fallback={<div>Cargando información...</div>}>
+      <div id='information'>
+        <p>{licencia.length ? licencia[0] : ''}</p>
+        <p>{licencia.length > 1 ? licencia[1] : ''}</p>
+      </div>
+    </Suspense>
   );
 };
 
