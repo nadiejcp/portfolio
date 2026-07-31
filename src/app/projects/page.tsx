@@ -4,7 +4,6 @@ import LoadingSpinner from "@/components/Loading";
 import ProjectContainer from "@/components/ProjectContainer";
 import { PROJECTS } from "@/components/ProjectContext";
 import SlideDown from "@/components/SlideDown";
-import SlideUp from "@/components/SlideUp";
 import { useEffect, useState } from "react";
 
 interface Project {

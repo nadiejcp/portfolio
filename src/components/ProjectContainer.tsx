@@ -48,7 +48,7 @@ const ProjectContainer = ({ project }: ContainerProps) => {
   }
   
   return (
-    <div className="flex flex-col justify-evenly w-full bg-brand-dark/60 backdrop-blur-lg border border-white/10 p-5 rounded-3xl cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/5 hover:bg-brand-dark/80"
+    <div className="flex flex-col justify-evenly w-full bg-brand-dark/60 backdrop-blur-lg border border-white/10 p-5 rounded-3xl cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/5 hover:bg-brand-dark/80 group"
     onClick={() => { 
       setProject(project);
       localStorage.setItem('project', JSON.stringify(project));
@@ -61,8 +61,8 @@ const ProjectContainer = ({ project }: ContainerProps) => {
         objectFit: 'cover',
       }}/>
       <div className='flex flex-col gap-2 mt-3 mb-2'>
-        <p>{project.title}</p>
-        <p>{translations[project.typo as TranslationKey]}</p>
+        <p className="font-bold text-gray-200 group-hover:text-brand-cyan transition-colors">{project.title}</p>
+        <p className="text-sm text-gray-400">{translations[project.typo as TranslationKey]}</p>
       </div>
     </div>
   );
