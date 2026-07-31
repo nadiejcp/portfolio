@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import BigSquare from "@/components/BigSquare";
 
 type Testimonial = {
   name: string;
@@ -18,11 +19,13 @@ type Testimonial = {
 
 const TwoChildren = ({ title, children }: {title: string, children: React.ReactNode }) => {
   return (
-    <div className="bg-[#1d1d1d] p-2 flex flex-col mt-5 w-[40%] rounded-2xl p-5 justify-between pt-8 pb-8">
-      <div className="font-bold">
+    <div className="bg-brand-dark/60 backdrop-blur-xl border border-white/10 flex flex-col w-[90%] lg:w-[45%] rounded-3xl p-6 lg:p-8 shadow-2xl justify-start">
+      <div className="font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-purple mb-4">
         {title}
       </div>
-      {children}
+      <div className="text-gray-300 text-lg leading-relaxed">
+        {children}
+      </div>
     </div>
   );
 }
@@ -38,7 +41,7 @@ const Project = () => {
   useEffect(() => {
     const lang = localStorage.getItem('language');
     if (lang){
-      setLanguage(lang);
+      setLanguage(lang as 'ES' | 'EN');
     }
   }, [setLanguage]);
 
@@ -46,7 +49,7 @@ const Project = () => {
     keys: language === 'EN' ? 'Key Technologies & Skills' : 'Habilidades y herramientas tecnológicas',
     description: language === 'EN' ? 'Project Description' : 'Descripción del Proyecto',
     short: language === 'EN' ? 'Short Description' : 'Descripción Corta',
-    click: language === 'EN' ? 'Click me' : 'Haz click aquí',
+    click: language === 'EN' ? 'Click me to visit' : 'Haz click para visitar',
   };
 
   useEffect(() => {
@@ -63,14 +66,15 @@ const Project = () => {
     }
 
     function fetchTestimonials() {
+      if (!project.techStackTitles) return;
       const testimonialsArray: Testimonial[] = (language === 'EN' ? project.techStackTitles : project.techStackTitlesES).map(
         (title, index) => {
           return {
             name: title,
             comment: (language === 'EN'
-              ? project.techStackDetails[index].split(',')
-              : project.techStackDetailsES[index].split(',')
-            ),
+              ? project.techStackDetails[index]?.split(',')
+              : project.techStackDetailsES[index]?.split(',')
+            ) || [],
           };
         }
       );
@@ -95,35 +99,48 @@ const Project = () => {
   }
 
   return (
-    <div className="w-[100%] m-10 flex flex-col gap-4">
-      <SlideUp>
-        <div className="bg-[#1d1d1d] p-2 flex justify-center text-4xl rounded-2xl font-bold">
-          {project.title}
+    <div className="w-full p-4 lg:p-10 flex flex-col gap-10 overflow-x-hidden">
+      <SlideUp amount={0.1}>
+        <div className="bg-brand-dark/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 lg:p-8 flex justify-center items-center shadow-2xl">
+          <h1 className="text-3xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-purple text-center">
+            {project.title}
+          </h1>
         </div>
-        <div className="flex justify-center mt-5 justify-evenly w-full">
-          <Link href={project.url} target="_blank" className="transition-transform duration-300 ease-in-out hover:-translate-y-3 hover:bg-[#222] rounded-2xl bg-[#1d1d1d] w-[40%] p-2 flex justify-center cursor-pointer flex-col items-center gap-5">
-            <div>{translations.click}</div>
-            <Image 
-              src={`/portfolio/projects/${project.name}.png`} 
-              alt='' 
-              width={100} 
-              height={100}
-              style={{
-                width: '80%',
-                height: '60%',
-                objectFit: 'contain',
-              }}
-            />
+        <div className="flex flex-col lg:flex-row justify-center mt-8 gap-8 w-full items-center lg:items-stretch">
+          <Link href={project.url} target="_blank" className="transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-cyan/20 rounded-3xl bg-brand-dark/60 backdrop-blur-xl border border-white/10 hover:border-brand-cyan/40 w-[90%] lg:w-[45%] p-6 lg:p-8 flex flex-col justify-center items-center gap-6 group">
+            <div className="font-semibold text-xl text-gray-300 group-hover:text-brand-cyan transition-colors">{translations.click}</div>
+            <div className="relative w-full aspect-video flex items-center justify-center">
+              <Image 
+                src={`/portfolio/projects/${project.name}.png`} 
+                alt={project.title} 
+                fill
+                className="object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
           </Link>
           <TwoChildren title={translations.short}>
-            <div>
-              {project.shortDescription.split('--')[language === 'EN' ? 0 : 1]}
-            </div>
+            <p>
+              {project.shortDescription?.split('--')[language === 'EN' ? 0 : 1]}
+            </p>
           </TwoChildren>
         </div>
       </SlideUp>
-      <AnimatedServices services={project.screens} autoplay={true} name={project.name} />
-      <Clients testimonials={testimonials} title={translations.keys} />
+      
+      {project.screens && project.screens.length > 0 && (
+        <SlideUp amount={0.3}>
+          <div className="mt-4">
+            <AnimatedServices services={project.screens} autoplay={true} name={project.name} />
+          </div>
+        </SlideUp>
+      )}
+      
+      {testimonials.length > 0 && (
+        <SlideUp amount={0.4}>
+          <div className="mb-20 mt-4">
+            <Clients testimonials={testimonials} title={translations.keys} />
+          </div>
+        </SlideUp>
+      )}
     </div>
   );
 };
