@@ -42,26 +42,28 @@ export default function Home() {
   }, [setLanguage]);
 
   return (
-    <div className="w-full m-10 flex flex-col gap-10">
+    <div className="w-full p-4 lg:p-10 flex flex-col gap-10">
       <SlideDown>
-        <div className="flex justify-center gap-x-10">
-          <BigSquare blur={false} title={translations.projects} subtitle={''} width="50%">
+        <div className="flex flex-col lg:flex-row justify-center gap-5 lg:gap-10">
+          <BigSquare blur={false} title={translations.projects} subtitle={''} width="w-full lg:w-1/2">
             <Medallion title={String(PROJECTS.length)}/>
           </BigSquare>
-          <BigSquare blur={true} icon={'/portfolio/jairo.jpg'} title={translations.title2} subtitle={translations.subTitle2} width="100%">
+          <BigSquare blur={true} icon={'/portfolio/jairo.jpg'} title={translations.title2} subtitle={translations.subTitle2} width="w-full">
           </BigSquare>
         </div>
       </SlideDown>
       <SlideUp amount={0.3}>
-        <BigSquare blur={false} title={translations.title2} subtitle={''} width="100%">
-          <SmallSquare title={'7'} subtitle={translations.programming}/>
-          <SmallSquare title={"+5"} subtitle={translations.experience}/>
-          <SmallSquare title={"CV"} subtitle={translations.download} link={language === 'EN' ? 'CV_Jairo_Cabrera.pdf' : 'CV_Jairo_Cabrera_ES.pdf'}/>
+        <BigSquare blur={false} title={translations.title2} subtitle={''} width="w-full">
+          <div className="flex flex-col lg:flex-row gap-5 items-center justify-center">
+            <SmallSquare title={'7'} subtitle={translations.programming}/>
+            <SmallSquare title={"+5"} subtitle={translations.experience}/>
+            <SmallSquare title={"CV"} subtitle={translations.download} link={language === 'EN' ? 'CV_Jairo_Cabrera.pdf' : 'CV_Jairo_Cabrera_ES.pdf'}/>
+          </div>
         </BigSquare>
       </SlideUp>
       <SlideUp amount={0.5}>
-        <div className="flex justify-center gap-x-10">
-          <BigSquare blur={false}  title={translations.title3} subtitle={translations.subTitle3} width="50%">
+        <div className="flex flex-col lg:flex-row justify-center gap-5 lg:gap-10 pb-20">
+          <BigSquare blur={false}  title={translations.title3} subtitle={translations.subTitle3} width="w-full lg:w-1/2">
             <div className="flex flex-col gap-y-5">
               <div className="flex gap-5 justify-center">
                 <SmallLink title={`🎹 ${translations.passion1}`}/>
@@ -79,7 +81,7 @@ export default function Home() {
               </div>
             </div>
           </BigSquare>
-          <BigSquare blur={false} title={translations.title4} subtitle={translations.subTitle4} width="50%">
+          <BigSquare blur={false} title={translations.title4} subtitle={translations.subTitle4} width="w-full lg:w-1/2">
             <div className="flex flex-col gap-y-5">
               <div className="flex gap-5 justify-center">
                 <SmallLink title={"GitHub"} icon={"/portfolio/icons/github.svg"} link='https://github.com/nadiejcp'/>

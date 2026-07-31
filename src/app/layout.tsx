@@ -28,9 +28,11 @@ export default function RootLayout({
       >
         <LanguageProvider>
           <ProjectProvider>
-            <div className="flex">
+            <div className="flex flex-col lg:flex-row relative">
               <SideBar />
-              {children}
+              <div className="w-full flex-1 max-w-[100vw] overflow-x-hidden">
+                {children}
+              </div>
             </div>
           </ProjectProvider>
         </LanguageProvider>

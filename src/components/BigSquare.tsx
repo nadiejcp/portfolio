@@ -15,13 +15,12 @@ const BigSquare = ({icon, title, subtitle, width, blur, children} : bigSquarePro
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         height: '50vh',
-        width: width,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
       };
     return(
-        <div className="bg-brand-dark/40 backdrop-blur-3xl border border-white/20 rounded-xl flex flex-col w-full justify-center items-center shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,255,255,0.2)] hover:bg-brand-dark/60 relative overflow-hidden"
+        <div className={`bg-brand-dark/40 backdrop-blur-3xl border border-white/20 rounded-xl flex flex-col justify-center items-center shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,255,255,0.2)] hover:bg-brand-dark/60 relative overflow-hidden ${width}`}
         style={icon ? backgroundImage : {}}>
             <div className="h-[70%] mt-15 mb-3 ml-10 mr-10 flex justify-center gap-x-10">
                 {children}

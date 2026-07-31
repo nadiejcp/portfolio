@@ -87,7 +87,7 @@ export default function Experience() {
   ];
 
   return (
-    <div className="w-full m-10 flex flex-col gap-10 overflow-y-auto pr-5 h-screen pb-20">
+    <div className="w-full p-4 lg:p-10 flex flex-col gap-10 overflow-y-auto lg:pr-5 h-screen pb-20">
       <SlideDown amount={0.1}>
         <div className="bg-brand-dark/60 backdrop-blur-xl border border-white/10 rounded-xl p-8 flex flex-col justify-center items-center shadow-2xl">
           <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">

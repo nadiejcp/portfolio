@@ -48,7 +48,7 @@ const ProjectContainer = ({ project }: ContainerProps) => {
   }
   
   return (
-    <div className="flex flex-col justify-evenly w-[30%] bg-brand-dark/60 backdrop-blur-lg border border-white/10 pt-5 pl-5 pr-5 rounded-3xl cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/5 hover:bg-brand-dark/80"
+    <div className="flex flex-col justify-evenly w-full bg-brand-dark/60 backdrop-blur-lg border border-white/10 p-5 rounded-3xl cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/5 hover:bg-brand-dark/80"
     onClick={() => { 
       setProject(project);
       localStorage.setItem('project', JSON.stringify(project));

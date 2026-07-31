@@ -134,7 +134,6 @@ export const PROJECTS: Project[] = [
       }
     ]
   },
-  ,
   {
     id: 4,
     name: 'ai_agent_cover',
@@ -212,8 +211,7 @@ export const PROJECTS: Project[] = [
     techStackDetails: ['AWS, Kubernetes, Docker', 'Python, FastAPI, Microservices'],
     techStackDetailsES: ['AWS, Kubernetes, Docker', 'Python, FastAPI, Microservicios'],
     screens: []
-  }
-  ,
+  },
   {
     id: 4,
     name: 'ai_agent_cover',

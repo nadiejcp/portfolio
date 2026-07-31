@@ -45,32 +45,15 @@ export default function About() {
 
   if (loading) return <LoadingSpinner />
 
-  const containers = Math.trunc(projects.length / 3) + 1;
   return (
-    <div className="w-full m-10 flex flex-col gap-10">
-      {Array.from({ length: containers }).map((_, i) =>
-        i === 0 ?
-          <SlideDown amount={0.3} key={`slider-${i}`}>
-            <div className="flex justify-evenly" key={i}>
-              {Array.from({ length: Math.min(3, projects.length - 3*i)}).map((_, j) => (
-                <ProjectContainer
-                  key={`project-${j}`}
-                  project={projects[i*3+j]}
-                />
-              ))}
-            </div>
-          </SlideDown> :
-          <SlideUp amount={0.5} key={`slider-${i}`}>
-            <div className="flex justify-evenly" key={i}>
-              {Array.from({ length: Math.min(3, projects.length - 3*i)}).map((_, j) => (
-                <ProjectContainer
-                  key={`project-${j}`}
-                  project={projects[i*3+j]}
-                />
-              ))}
-            </div>
-          </SlideUp>
-      )}
+    <div className="w-full p-4 lg:p-10 flex flex-col gap-10">
+      <SlideDown amount={0.1}>
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-8 w-full pb-20">
+          {projects.map((project, i) => (
+             <ProjectContainer key={`project-${i}`} project={project} />
+          ))}
+        </div>
+      </SlideDown>
     </div>
   );
 }

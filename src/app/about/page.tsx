@@ -62,7 +62,7 @@ export default function About() {
   const others = ['AWS', 'Docker', 'Git', 'GitHub', 'GitLab CI/CD', 'AI Agents'];
 
   return (
-    <div className="w-full m-10 flex flex-col gap-10">
+    <div className="w-full p-4 lg:p-10 flex flex-col gap-10 pb-20">
       <SlideDown amount={0.1}>
         <div className="flex bg-brand-dark/60 backdrop-blur-xl border border-white/10 rounded-xl flex-col w-full justify-center items-center gap-5 pt-8 pb-8 shadow-2xl transition-all duration-500">
           <div>
@@ -75,7 +75,7 @@ export default function About() {
         </div>
       </SlideDown>
       <SlideUp amount={0.5}>
-        <BigSquare blur={false} title={''} subtitle={''} width="100%">
+        <BigSquare blur={false} title={''} subtitle={''} width="w-full">
             {component("FrontEnd", frontEnd)}
             {component("Backend", backEnd)}
             {component(translations.skill4, databases)}
@@ -83,8 +83,8 @@ export default function About() {
         </BigSquare>
       </SlideUp>
       <SlideUp amount={0.5}>
-        <div className="flex justify-center gap-x-10">
-          <BigSquare blur={false}  title={translations.skills} subtitle={''} width="50%">
+        <div className="flex flex-col lg:flex-row justify-center gap-5 lg:gap-10">
+          <BigSquare blur={false}  title={translations.skills} subtitle={''} width="w-full lg:w-1/2">
             <div className="flex flex-col gap-y-5">
               <div className="flex gap-5 justify-center">
                 <SmallLink title={translations.skill1}/>
@@ -104,7 +104,7 @@ export default function About() {
               </div>
             </div>
           </BigSquare>
-          <BigSquare blur={false} title={translations.softSkills} subtitle={''} width="50%">
+          <BigSquare blur={false} title={translations.softSkills} subtitle={''} width="w-full lg:w-1/2">
             <div className="flex flex-col gap-y-5">
               <div className="flex gap-5 justify-center">
                 <SmallLink title={translations.skill11} icon="/portfolio/icons/Icons01.svg"/>
