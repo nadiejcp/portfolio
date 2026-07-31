@@ -37,7 +37,7 @@ const ProjectContainer = ({ project }: ContainerProps) => {
   useEffect(() => {
     const lang = localStorage.getItem('language');
     if (lang){
-      setLanguage(lang);
+      setLanguage(lang as 'ES' | 'EN');
     }
   }, [setLanguage]);
 
