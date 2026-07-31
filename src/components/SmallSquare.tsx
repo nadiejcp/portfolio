@@ -13,7 +13,7 @@ type SmallSquareProps = {
 export default function SmallSquare({ title, subtitle, icon, link, openLink }: SmallSquareProps) {
     return(
       <div
-        className="p-7 w-[230px] flex flex-col items-center rounded-3xl bg-[radial-gradient(circle_farthest-corner_at_0%_0%,#48494a,#262627)] shadow-md shadow-white/50 hover:-translate-y-3 hover:bg-[#222] cursor-pointer"
+        className="p-7 w-[230px] flex flex-col items-center rounded-3xl bg-[radial-gradient(circle_farthest-corner_at_0%_0%,rgba(72,73,74,0.4),rgba(38,38,39,0.4))] backdrop-blur-3xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-3 hover:bg-brand-dark-alt/60 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)] cursor-pointer"
         onClick={
           link
             ? () => {
@@ -26,8 +26,8 @@ export default function SmallSquare({ title, subtitle, icon, link, openLink }: S
         }
       >
         {icon ? <Image src={icon} alt={'Icon for Social Network'} width={50} height={50}/> 
-        : <p className="text-[48px] bg-gradient-to-br from-white via-gray-500 to-white bg-clip-text text-transparent">{title}</p>}
-        <p className="text-[18px] text-center">{subtitle}</p>
+        : <p className="text-[48px] font-bold bg-gradient-to-br from-brand-cyan via-brand-purple to-brand-pink bg-clip-text text-transparent">{title}</p>}
+        <p className="text-[18px] text-center font-medium text-brand-purple-light mt-2">{subtitle}</p>
       </div>
     );
 }

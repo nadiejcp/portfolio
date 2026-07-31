@@ -64,11 +64,11 @@ export default function About() {
   return (
     <div className="w-full m-10 flex flex-col gap-10">
       <SlideDown amount={0.1}>
-        <div className="flex bg-[#1d1d1d] rounded-xl flex flex-col w-full justify-center items-center gap-5 pt-5 pb-5">
+        <div className="flex bg-brand-dark/60 backdrop-blur-xl border border-white/10 rounded-xl flex-col w-full justify-center items-center gap-5 pt-8 pb-8 shadow-2xl transition-all duration-500">
           <div>
-            <div className="text-bold text-3xl">Jairo Cabrera Pino - {translations.nation}</div>
+            <div className="font-bold text-4xl text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Jairo Cabrera Pino - {translations.nation}</div>
           </div>
-          <div className="flex flex-col gap-3 max-w-4xl text-justify">
+          <div className="flex flex-col gap-4 max-w-4xl text-justify text-gray-300 text-lg leading-relaxed px-5">
             <div>{translations.p1}</div>
             <div>{translations.p2}</div>
           </div>
