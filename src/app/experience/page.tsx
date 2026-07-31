@@ -11,8 +11,8 @@ export default function Experience() {
 
   useEffect(() => {
     const lang = localStorage.getItem('language');
-    if (lang){
-      setLanguage(lang);
+    if (lang) {
+      setLanguage(lang as 'EN' | 'ES');
     }
   }, [setLanguage]);
 

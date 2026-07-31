@@ -33,11 +33,11 @@ export default function Home() {
     title4: language === 'EN' ? 'Check my social profile' : 'Revisa mis redes sociales',
     subTitle4: language === 'EN' ? '' : '',
   }
- 
+
   useEffect(() => {
     const lang = localStorage.getItem('language');
-    if (lang){
-      setLanguage(lang);
+    if (lang) {
+      setLanguage(lang as 'EN' | 'ES');
     }
   }, [setLanguage]);
 
@@ -46,7 +46,7 @@ export default function Home() {
       <SlideDown>
         <div className="flex flex-col lg:flex-row justify-center gap-5 lg:gap-10">
           <BigSquare blur={false} title={translations.projects} subtitle={''} width="w-full lg:w-1/2">
-            <Medallion title={String(PROJECTS.length)}/>
+            <Medallion title={String(PROJECTS.length)} />
           </BigSquare>
           <BigSquare blur={true} icon={'/portfolio/jairo.jpg'} title={translations.title2} subtitle={translations.subTitle2} width="w-full">
           </BigSquare>
@@ -55,46 +55,46 @@ export default function Home() {
       <SlideUp amount={0.3}>
         <BigSquare blur={false} title={translations.title2} subtitle={''} width="w-full">
           <div className="flex flex-col lg:flex-row gap-5 items-center justify-center">
-            <SmallSquare title={'7'} subtitle={translations.programming}/>
-            <SmallSquare title={"+5"} subtitle={translations.experience}/>
-            <SmallSquare title={"CV"} subtitle={translations.download} link={language === 'EN' ? 'CV_Jairo_Cabrera.pdf' : 'CV_Jairo_Cabrera_ES.pdf'}/>
+            <SmallSquare title={'7'} subtitle={translations.programming} />
+            <SmallSquare title={"+5"} subtitle={translations.experience} />
+            <SmallSquare title={"CV"} subtitle={translations.download} link={language === 'EN' ? 'CV_Jairo_Cabrera.pdf' : 'CV_Jairo_Cabrera_ES.pdf'} />
           </div>
         </BigSquare>
       </SlideUp>
       <SlideUp amount={0.5}>
         <div className="flex flex-col lg:flex-row justify-center gap-5 lg:gap-10 pb-20">
-          <BigSquare blur={false}  title={translations.title3} subtitle={translations.subTitle3} width="w-full lg:w-1/2">
+          <BigSquare blur={false} title={translations.title3} subtitle={translations.subTitle3} width="w-full lg:w-1/2">
             <div className="flex flex-col gap-y-5">
               <div className="flex gap-5 justify-center">
-                <SmallLink title={`🎹 ${translations.passion1}`}/>
-                <SmallLink title={`⚽ ${translations.passion2}`}/>
-                <SmallLink title={`♞ ${translations.passion3}`}/>
+                <SmallLink title={`🎹 ${translations.passion1}`} />
+                <SmallLink title={`⚽ ${translations.passion2}`} />
+                <SmallLink title={`♞ ${translations.passion3}`} />
               </div>
               <div className="flex gap-5 justify-center">
-                <SmallLink title={`🏔️ ${translations.passion4}`}/>
-                <SmallLink title={`🍿 ${translations.passion5}`}/>
-                <SmallLink title={`🗿 ${translations.passion6}`}/>
+                <SmallLink title={`🏔️ ${translations.passion4}`} />
+                <SmallLink title={`🍿 ${translations.passion5}`} />
+                <SmallLink title={`🗿 ${translations.passion6}`} />
               </div>
               <div className="flex gap-5 justify-center">
-                <SmallLink title={`🍳 ${translations.passion7}`}/>
-                <SmallLink title={`🎮 ${translations.passion8}`}/>
+                <SmallLink title={`🍳 ${translations.passion7}`} />
+                <SmallLink title={`🎮 ${translations.passion8}`} />
               </div>
             </div>
           </BigSquare>
           <BigSquare blur={false} title={translations.title4} subtitle={translations.subTitle4} width="w-full lg:w-1/2">
             <div className="flex flex-col gap-y-5">
               <div className="flex gap-5 justify-center">
-                <SmallLink title={"GitHub"} icon={"/portfolio/icons/github.svg"} link='https://github.com/nadiejcp'/>
-                <SmallLink title={"Twitch"} icon={"/portfolio/icons/twitch.svg"} link='https://www.twitch.tv/nadiejcp'/>
-                <SmallLink title={"Email"} icon={"/portfolio/icons/mail.svg"} link='mailto:jairocabrera87@hotmail.com'/>
+                <SmallLink title={"GitHub"} icon={"/portfolio/icons/github.svg"} link='https://github.com/nadiejcp' />
+                <SmallLink title={"Twitch"} icon={"/portfolio/icons/twitch.svg"} link='https://www.twitch.tv/nadiejcp' />
+                <SmallLink title={"Email"} icon={"/portfolio/icons/mail.svg"} link='mailto:jairocabrera87@hotmail.com' />
               </div>
               <div className="flex gap-5 justify-center">
-                <SmallLink title={"LinkedIn"} icon={"/portfolio/icons/linkedin.svg"} link='https://www.linkedin.com/in/nadiejcp/'/>
-                <SmallLink title={"WhatsApp"} icon={"/portfolio/icons/wpp.svg"} link='https://wa.me/+593988988079'/>
+                <SmallLink title={"LinkedIn"} icon={"/portfolio/icons/linkedin.svg"} link='https://www.linkedin.com/in/nadiejcp/' />
+                <SmallLink title={"WhatsApp"} icon={"/portfolio/icons/wpp.svg"} link='https://wa.me/+593988988079' />
               </div>
               <div className="flex gap-5 justify-center">
-                <SmallLink title={"Instagram"} icon={"/portfolio/icons/ig.svg"} link='https://www.instagram.com/nadiejcp7'/>
-                <SmallLink title={translations.iconTitle} icon={"/portfolio/icons/phone.svg"} link='tel:+593988988079'/>
+                <SmallLink title={"Instagram"} icon={"/portfolio/icons/ig.svg"} link='https://www.instagram.com/nadiejcp7' />
+                <SmallLink title={translations.iconTitle} icon={"/portfolio/icons/phone.svg"} link='tel:+593988988079' />
               </div>
             </div>
           </BigSquare>

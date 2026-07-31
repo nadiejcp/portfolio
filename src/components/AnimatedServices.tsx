@@ -24,12 +24,12 @@ export const AnimatedServices = ({
   name: string;
 }) => {
   const [active, setActive] = useState(0);
-  const {language, setLanguage} = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
     const lang = localStorage.getItem('language');
-    if (lang){
-      setLanguage(lang);
+    if (lang) {
+      setLanguage(lang as 'EN' | 'ES');
     }
   }, [setLanguage]);
 

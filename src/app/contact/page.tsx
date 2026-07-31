@@ -12,7 +12,7 @@ export default function About() {
   useEffect(() => {
     const lang = localStorage.getItem('language');
     if (lang){
-      setLanguage(lang);
+      setLanguage(lang as 'EN' | 'ES');
     }
   }, [setLanguage]);
 
